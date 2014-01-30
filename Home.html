@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Buttons!</title>
+    <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#Calculate").click(function(){
+                $("#Display").text($("#Variable").val().length);
+            });
+        });
+    </script>
 </head>
 <body>
+<script src="Functions.js">
+</script>
 
 <form id="form1">
     <button type="button" name="Increase"><label>Increase</label></button>
     <button type="button" name="Decrease"><label>Decrease</label></button><br>
 
     <button type="button" name="Color"><label>Color Options</label></button>
-    <input type="text" name="Variable"><br>
-    <button type="button" name="Calculate"><label>Calculate</label></button>
+    <input type="text" name="Variable" id="Variable"><br>
     <button type="button" name="Save"><label>Save</label></button>
     <button type="button" name="Undo"><label>Undo</label></button>
-    <button type="button" name="Redo"><label>Redo</label></button><br>
+    <button type="button" name="Redo"><label>Redo</label></button>
+    <button type="button" name="Calculate" id="Calculate"><label>Calculate</label></button>
+    <label name="NotUsed">Number of Characters: </label>
+    <label name="Display" id="Display"></label><br>
 
     <button type="button" name="ColorSearch"><label>Color Options</label></button>
     <input type="text" name="Search">
