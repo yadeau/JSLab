@@ -2,28 +2,35 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Buttons!</title>
-    <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="Functions.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
+        var control = initialize();
         $(document).ready(function(){
             $("#Calculate").click(function(){
                 $("#Display").text($("#Variable").val().length);
+            });
+            $("#Save").click(function(){
+                control.save($("#Variable").val());
+            });
+            $("#Undo").click(function(){
+                $("#Variable").val(control.undo());
+            });
+            $("#Redo").click(function(){
+                $("#Variable").val(control.redo());
             });
         });
     </script>
 </head>
 <body>
-<script src="Functions.js">
-</script>
-
 <form id="form1">
+    <textarea rows="2" cols="40" type="text" name="Variable" id="Variable"></textarea><br>
     <button type="button" name="Increase"><label>Increase</label></button>
-    <button type="button" name="Decrease"><label>Decrease</label></button><br>
-
+    <button type="button" name="Decrease"><label>Decrease</label></button>
     <button type="button" name="Color"><label>Color Options</label></button>
-    <input type="text" name="Variable" id="Variable"><br>
-    <button type="button" name="Save"><label>Save</label></button>
-    <button type="button" name="Undo"><label>Undo</label></button>
-    <button type="button" name="Redo"><label>Redo</label></button>
+    <button type="button" name="Save" id="Save"><label>Save</label></button>
+    <button type="button" name="Undo" id="Undo"><label>Undo</label></button>
+    <button type="button" name="Redo" id="Redo"><label>Redo</label></button>
     <button type="button" name="Calculate" id="Calculate"><label>Calculate</label></button>
     <label name="NotUsed">Number of Characters: </label>
     <label name="Display" id="Display"></label><br>
