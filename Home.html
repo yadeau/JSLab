@@ -4,6 +4,7 @@
     <title>Buttons!</title>
     <script src="Functions.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery.highlight.js"></script>
     <script>
         var control = initialize();
         $(document).ready(function(){
@@ -19,15 +20,51 @@
             $("#Redo").click(function(){
                 $("#Variable").val(control.redo());
             });
+            $("#Search").click(function(){
+                $("body p").text($("#Variable").val());
+            });
+            $("#Highlight").click(function(){
+                $(".highlight").css({ backgroundColor: "#FFFF88" });
+                $("body p").highlight($("#textToSearch").val());
+            });
+            $("#Increase").click(function(){
+                $("#Variable").css({fontSize: parseInt($("#Size").val())});
+            });
+            $("#Color").click(function(){
+                $("#Variable").css({color: $("#TextColor").val()});
+            });
+            $("#Background").click(function(){
+                $("#Variable").css({backgroundColor: $("#BackgroundColor").val()});
+            });
+            $("#Done").click(function(){
+                $("body p").text("");
+            });
+            $("#Variable").mouseover(function(){
+                $("body").css({float: "right"});
+            });
+            $("#Variable").mouseout(function(){
+                $("body").css({backgroundColor: "Gray"});
+            });
         });
+
+
+
+
     </script>
 </head>
 <body>
 <form id="form1">
     <textarea rows="2" cols="40" type="text" name="Variable" id="Variable"></textarea><br>
-    <button type="button" name="Increase"><label>Increase</label></button>
-    <button type="button" name="Decrease"><label>Decrease</label></button>
-    <button type="button" name="Color"><label>Color Options</label></button>
+
+    <button type="button" name="Increase" id="Increase"><label>Resize</label></button>
+    <input type="text" name="Size" id="Size"><br>
+
+    <button type="button" name="Color" id="Color"><label>Color Text</label></button>
+    <input type="text" name="TextColor" id="TextColor"><br>
+
+    <button type="button" name="ColorSearch" id="Background"><label>Color Background</label></button>
+    <input type="text" name="BackgroundColor" id="BackgroundColor"><br>
+
     <button type="button" name="Save" id="Save"><label>Save</label></button>
     <button type="button" name="Undo" id="Undo"><label>Undo</label></button>
     <button type="button" name="Redo" id="Redo"><label>Redo</label></button>
@@ -35,10 +72,12 @@
     <label name="NotUsed">Number of Characters: </label>
     <label name="Display" id="Display"></label><br>
 
-    <button type="button" name="ColorSearch"><label>Color Options</label></button>
-    <input type="text" name="Search">
-    <button type="button" name="Search"><label>Search</label></button><br>
-</form>
+    <input type="text" name="Search" id="textToSearch">
+    <button type="button" name="Search" id="Search"><label>Copy</label></button>
+    <button type="button" name="highlight" id="Highlight"><label>Search</label></button>
+    <button type="button" name="Done" id="Done"><label>Done</label></button><br>
 
+</form>
+<p id="areaOfSearch"></p>
 </body>
 </html>
