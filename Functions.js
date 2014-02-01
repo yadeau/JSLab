@@ -25,6 +25,9 @@ function initialize() {
                 return toReturn;
             }
             return "Invalid use of redo"
+        },
+        getQueue: function (input) {
+            return queue[input];
         }
     }
 }
