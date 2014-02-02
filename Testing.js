@@ -7,7 +7,8 @@ var initialize = require('./Functions').initialize;
 var testSubject = initialize();
 
 describe('initialize', function(){
-    describe('test 1', function(){
+    describe('Adding test', function(){
+        // These break if we have anything besides what numbers are there
         it('Should store 0 in queue at index 0.', function(){
             testSubject.save("0");
             assert.equal("0", testSubject.getQueue(0));
@@ -35,6 +36,12 @@ describe('initialize', function(){
         it('Should store 1 in queue at index 0.', function(){
             assert.equal("1", testSubject.getQueue(0));
         })
+        describe('Undo test', function(){
+            it('Should move down the list', function(){
+                assert.equal("4", testSubject.undo());
+            })
+        });
     });
 });
+
 
